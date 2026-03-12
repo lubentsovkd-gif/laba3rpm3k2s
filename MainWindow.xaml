@@ -1,0 +1,62 @@
+﻿<Window x:Class="laba3rpm3k2s.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:laba3rpm3k2s"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- User's interface -->
+        <Grid Grid.Column="0"
+              Background="LightGray"
+              Margin="5">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <!-- Some parameters chooses for shapes -->
+            <StackPanel DockPanel.Dock="Top">
+                <TextBlock Text="Choose a color for your shapes"
+                           FontSize="16"
+                           FontWeight="Bold"
+                           Margin="5"/>
+                <ComboBox Margin="5"
+                          x:Name="ColorsList"
+                          SelectionChanged="ColorsList_SelectionChanged">
+                    <Label Content="Red"/>
+                    <Label Content="Green"/>
+                    <Label Content="Blue"/>
+                </ComboBox>
+            </StackPanel>
+            <!-- Button to confirm -->
+            <Button DockPanel.Dock="Bottom"
+                    Margin="5"
+                    Height="25"
+                    Content="Create Shapes"
+                    Grid.Row="1"
+                    x:Name="ConfirmButton" Click="ConfirmButton_Click"/>
+        </Grid>
+        
+        <!-- Shapes display -->
+        <StackPanel Orientation="Vertical"
+                    Grid.Column="1"
+                    Margin="5"
+                    Background="LightGray">
+            <TextBlock Margin="5"
+                       Text="App will display your shapes here"
+                       HorizontalAlignment="Center"
+                       FontSize="16"
+                       FontWeight="Bold"/>
+            <WrapPanel Margin="5"
+                       Background="LightGray"
+                       x:Name="ShapesList">
+            </WrapPanel>
+        </StackPanel>
+    </Grid>
+</Window>
