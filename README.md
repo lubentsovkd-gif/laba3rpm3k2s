@@ -1,1 +1,1 @@
-"master" for Factory Method, "refactored" for Abstract Factory
+"master" for Factory Method, "refactored_lab" for Abstract Factory
