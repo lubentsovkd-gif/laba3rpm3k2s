@@ -1,4 +1,5 @@
-﻿using laba3rpm3k2s.Factory_Method.Factories;
+﻿using laba3rpm3k2s.Abstract_Factory;
+using laba3rpm3k2s.Factory_Method.Factories;
 using laba3rpm3k2s.Factory_Method.Factories.SquareCreators;
 using laba3rpm3k2s.Factory_Method.Factories.TriangleCreators;
 using System.Text;
@@ -23,18 +24,16 @@ namespace laba3rpm3k2s
         {
             InitializeComponent();
         }
-        CircleCreator circleCreator;
-        SquareCreator squareCreator;
-        TriangleCreator triangleCreator;
+        IFigureFactory figureFactory;
 
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
             try
             {
                 ShapesList.Children.Clear();
-                ShapesList.Children.Add(circleCreator.CreateCircle().CreateUIElement());
-                ShapesList.Children.Add(triangleCreator.CreateTriangle().CreateUIElement());
-                ShapesList.Children.Add(squareCreator.CreateSquare().CreateUIElement());
+                ShapesList.Children.Add(figureFactory.CreateCircle().CreateUIElement());
+                ShapesList.Children.Add(figureFactory.CreateTriangle().CreateUIElement());
+                ShapesList.Children.Add(figureFactory.CreateSquare().CreateUIElement());
             }
             catch { }
         }
@@ -45,11 +44,11 @@ namespace laba3rpm3k2s
             switch (label.Content.ToString())
             {
                 case "Red":
-                    circleCreator = new RedCircleCreator(); squareCreator = new RedSquareCreator(); triangleCreator = new RedTriangleCreator(); break;
+                    figureFactory = new RedFactory(); break;
                 case "Blue":
-                    circleCreator = new BlueCircleCreator(); squareCreator = new BlueSquareCreator(); triangleCreator = new BlueTriangleCreator(); break;
+                    figureFactory = new BlueFactory(); break;
                 case "Green":
-                    circleCreator = new GreenCircleCreator(); squareCreator = new GreenSquareCreator(); triangleCreator = new GreenTriangleCreator(); break;
+                    figureFactory = new GreenFactory(); break;
                 default:
                     return;
             }
